@@ -24,7 +24,8 @@ When the user says **hunt** or asks to find hackathons:
    - **Devpost** — https://devpost.com/hackathons (filter by online)
    - **Devfolio** — https://devfolio.co/hackathons (filter by online)
    - **lablab.ai** — AI-focused hackathons
-4. **Verify each result** — check the event page to confirm it's truly online, free, and open for registration.
+4. **CLI fallback**: If web_fetch fails on JS-heavy sites, run `node tools/hunt-scout.js --json` for deterministic scraping of MLH data.
+5. **Verify each result** — check the event page to confirm it's truly online, free, and open for registration.
 
 ### 2. Present Results as Numbered List
 

@@ -1,0 +1,19 @@
+{
+  "name": "hunt-skill",
+  "owner": {
+    "name": "Lloyd",
+    "url": "https://github.com/lloyd-c137"
+  },
+  "metadata": {
+    "description": "🎯 Digital bounty hunter — find, track, and conquer online hackathons. No boss. No web3. Total freedom.",
+    "version": "1.0.0",
+    "repository": "https://github.com/lloyd-c137/hunt-skill"
+  },
+  "plugins": [
+    {
+      "name": "hunt",
+      "description": "Scout the web for upcoming online hackathons, vet them for quality, track them in map.md, and get reminded 1 day before each starts. Works with OpenClaw and any agent that supports the Agent Skills spec.",
+      "source": "./"
+    }
+  ]
+}
