@@ -1,6 +1,12 @@
 ---
 name: hunt
 description: Digital bounty hunter skill for finding, tracking, and managing online hackathon opportunities. Trigger when the user says "hunt", "find hackathons", "show map", "add [numbers] to map", or anything related to searching for online/free hackathons, managing a hackathon bucket list, or living a digital nomad/bounty hunter lifestyle. Use to browse the web for upcoming online hackathons, present them as numbered options, add selections to a map.md tracker, and schedule reminders.
+compatibility: Requires web fetching (web_fetch tool) to browse hackathon listings from public event pages. Requires cron scheduling for 1-day-before reminders. Requires file read/write for map.md persistence. Network access to mlh.com, devfolio.co, devpost.com, lablab.ai. Node.js 18+ for bundled CLI tools.
+license: MIT
+metadata:
+  author: lloyd-c137
+  version: "1.0.1"
+  repository: https://github.com/lloyd-c137/hunt-skill
 ---
 
 # Hunt — Digital Bounty Hunter 🎯
@@ -24,8 +30,7 @@ When the user says **hunt** or asks to find hackathons:
    - **Devpost** — https://devpost.com/hackathons (filter by online)
    - **Devfolio** — https://devfolio.co/hackathons (filter by online)
    - **lablab.ai** — AI-focused hackathons
-4. **CLI fallback**: If web_fetch fails on JS-heavy sites, run `node tools/hunt-scout.js --json` for deterministic scraping of MLH data.
-5. **Verify each result** — check the event page to confirm it's truly online, free, and open for registration.
+4. **Verify each result — check the event page to confirm it's truly online, free, and open for registration.
 
 ### 2. Present Results as Numbered List
 
