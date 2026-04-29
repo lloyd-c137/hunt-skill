@@ -28,19 +28,22 @@ When the user says **hunt** or asks to find hackathons:
 
 ### 2. Present Results as Numbered List
 
-Format each result clearly:
+**⚠️ Telegram formatting constraint:** Telegram does NOT support markdown tables. Use simple bullet lists and bold text only.
+
+Format each result clearly (Telegram-friendly):
 
 ```
 1. [Hackathon Name]
    🗓 Dates: May 8-14, 2026
-   ⏰ Timezone: [host timezone / UTC]
    🏢 Host: [Organization]
    🎯 Theme: [GenAI / FinTech / Open / etc.]
    📍 Location: Online
    💰 Cost: Free
    🌐 Link: [URL]
-   📝 Briefing: [1-2 sentence summary of what it's about and who it's for]
+   📝 Briefing: [1-2 sentence summary]
 ```
+
+**Never use markdown tables** when the answer is going to Telegram. Use bullet-formatted lists instead.
 
 ### 3. User Commands
 
@@ -112,3 +115,29 @@ Default user is **Lloyd** (Sir):
 - Prefer hackathons starting within the next 2 months unless user asks for longer.
 - If no suitable hackathons found, say so honestly — don't pad results with low-quality ones.
 - Cron job names should follow: `hunt-reminder-<normalized-name>` for easy management.
+
+## Telegram Output Rules
+
+When delivering output to Telegram:
+- **No markdown tables** — Telegram renders them as garbled code blocks
+- No markdown headers (`##`, `###`) — Telegram can't render them inline
+- Use simple bullet lists with `-` or `•` instead
+- Bold with `**bold**` works, but keep it simple
+- Numbers with `**bold**` titles for entries (e.g., `**1.** Name`)
+- Use emojis as visual separators (🎯, ⏰, 🌐, etc.)
+- Keep links plain or in angle brackets `<https://example.com>`
+- When presenting map data, format like this:
+
+```
+🗺 Map - 5 active
+
+**1.** GHW: GenAI
+   🗓 May 8-14 | 🏢 MLH
+   🎯 Generative AI | ⏰ Reminder May 7
+   🔗 https://events.mlh.io/events/13816
+
+**2.** Midnight Hackathon
+   🗓 May 15-17 | 🏢 MLH
+   🎯 Open theme | ⏰ Reminder May 14
+   🔗 https://events.mlh.io/
+``` 

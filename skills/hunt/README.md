@@ -1,78 +1,122 @@
-# Hunt Skill 🎯
+# Hunt 🎯
 
-**Digital bounty hunter skill for OpenClaw** — find, track, and manage online hackathons to live the digital nomad lifestyle.
+**Digital bounty hunter — find, track, and conquer online hackathons, build your portfolio, and live the digital nomad life.**
 
-## What It Does
+Hunt is an OpenClaw skill that turns your AI agent into a personal hackathon scout. It finds legit online hackathons, vets them for quality, tracks them in a `map.md` file, and reminds you before each event starts.
 
-Hunt turns your AI agent into a personal hackathon scout. When you say **"hunt"**, it:
+---
 
-1. **Scouts** the web for upcoming online hackathons (MLH, Devfolio, Devpost, lablab.ai)
-2. **Vets** each one — must be 100% online, free, and no web3 required (unless you ask)
-3. **Presents** a clean numbered list with dates, themes, and briefing notes
-4. **Tracks** selections in `map.md` when you say "add 1,3,5 to map"
-5. **Reminds** you automatically 1 day before each event starts
+## 🚀 Quick Start
 
-## Installation
-
-Install via ClawHub or place in your skills directory:
-
+### 1. Install
+Place the skill in your workspace:
 ```bash
-# From ClawHub
-clawhub install hunt
-
-# Or manually
-cp hunt.skill ~/.openclaw/workspace/skills/
+cp -r hunt/ ~/.openclaw/workspace/skills/
 ```
 
-## Usage
+### 2. Hunt
+Say **"hunt"** to your agent. It'll browse the web and find upcoming online hackathons that match your skills.
+
+### 3. Track
+Say **"add 1,3,5 to map"** to save selected hackathons. They get written to `map.md` and reminders are set automatically.
+
+### 4. Check
+Say **"show map"** anytime to see your bounty board.
+
+---
+
+## 🧠 How It Works
 
 ```
-You: hunt
-🤖 → Presents numbered list of vetted hackathons
+You: "hunt"
+  Agent scouts MLH, Devfolio, Devpost, lablab.ai
+  → Filters: online only, free, no web3, matches your skills
+  → Presents a numbered list
 
-You: add 1,3,5 to map
-🤖 → Adds to map.md, sets cron reminders
+You: "add 1,3,5 to map"
+  Agent writes entries to map.md
+  → Sets cron reminder 1 day before each event
+  → Confirms what was added
 
-You: show map
-🤖 → Displays your current hackathon tracker
+You: "show map"
+  Agent reads map.md and displays your board
 
-You: remove 2 from map
-🤖 → Removes entry and cancels reminder
+You: "remove 2 from map"
+  Agent deletes entry, cancels reminder, renumbers
 ```
 
-## Map File
+---
 
-Your hackathons are tracked in [`map.md`](../map.md) — a living document you can check anytime:
-
-```markdown
-### 1. Global Hack Week: GenAI
-- **Host:** MLH
-- **Dates:** May 8–14, 2026
-- **Theme:** Generative AI
-- **Link:** https://...
-- **Reminder:** ✅ Set
-- **Status:** Upcoming
-```
-
-## Skill Files
+## 📦 Files
 
 ```
 hunt/
-├── SKILL.md                    # Core instructions for the AI agent
+├── SKILL.md              # Agent instructions (core logic)
+├── README.md             # This file
 ├── references/
-│   └── map-format.md           # Map.md format reference
-└── hunt.skill                  # Packaged distributable skill
+│   └── map-format.md     # map.md format reference
+└── hunt.skill            # Packaged distributable skill
 ```
 
-## Requirements
+---
 
-- OpenClaw with web_fetch tool enabled
-- Cron capability for reminders
-- Markdown file read/write access
+## 📋 Criteria for Hackathons
 
-## Philosophy
+| Criteria | Rule |
+|----------|------|
+| Online | 100% digital, no travel required |
+| Free | $0 to register and participate |
+| Open | Registration still open |
+| No web3 | No blockchain/crypto/NFT unless you ask |
+| Suitable | Matches your skill level (from USER.md) |
+
+---
+
+## 📍 The Map
+
+Your `map.md` tracks everything:
+
+```markdown
+# 🗺 Hunt Map
+
+## Active
+
+### 1. Global Hack Week: GenAI
+- **Host:** Major League Hacking (MLH)
+- **Dates:** May 8–14, 2026
+- **Theme:** Generative AI
+- **Link:** https://events.mlh.io/
+- **Reminder:** ✅ Set
+- **Status:** Upcoming
+- **Notes:** Beginner-friendly, daily challenges
+```
+
+---
+
+## ⏰ Reminders
+
+Hunt sets cron reminders automatically. They fire **1 day before** each event as a system event — you'll get a notification on Telegram (or whatever channel you use).
+
+---
+
+## ⚙️ Requirements
+
+- OpenClaw agent (any model)
+- `web_fetch` tool enabled
+- Cron scheduling capability
+- File read/write access to workspace
+
+---
+
+## 🧭 Philosophy
 
 > Work anywhere. No boss. Total freedom.
 >
 > Every hackathon is a bounty. Every project ships your portfolio forward.
 > The map is your treasure tracker. Hunt well.
+
+---
+
+## 📝 License
+
+MIT — use it, fork it, ship it.
