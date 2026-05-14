@@ -13,6 +13,7 @@ The map.md file lives at `~/.openclaw/workspace/map.md`. It tracks hackathons th
 - **Host:** Organization Name
 - **Dates:** May 8-14, 2026
 - **Theme:** GenAI / FinTech / Open
+- **Prize:** Cash / Non-cash / None
 - **Link:** https://event.url
 - **Starts:** May 8 @ 09:00 UTC
 - **Reminder:** ✅ Set for May 7

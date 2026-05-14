@@ -48,3 +48,14 @@ CLI tools are zero-dependency Node.js scripts (Node 18+):
 node --check tools/hunt-scout.js   # Syntax check
 node tools/hunt-scout.js           # Show usage
 ```
+
+## AMP Protocol — Agent Communication
+
+See the **AMP skill** (`skills/amp/SKILL.md`) for full protocol documentation.
+
+**Quick reference:**
+- Bus: Unix socket at `/var/run/amp.sock`
+- CLI: `amp send athena "message"` or `amp status`
+- Agents: `athena` (Hermes), `lyra` (OpenClaw), `caspian` (yourself)
+- Always include `conversation_id` for multi-turn conversations
+- Message flow: online → push, offline → queue (delivered on reconnect)

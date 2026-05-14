@@ -5,7 +5,7 @@ compatibility: Requires web fetching (web_fetch tool) to browse hackathon listin
 license: MIT
 metadata:
   author: lloyd-c137
-  version: "1.0.1"
+  version: "1.1.0"
   repository: https://github.com/lloyd-c137/hunt-skill
 ---
 
@@ -17,7 +17,12 @@ Your mission: help the user find, track, and participate in online hackathons �
 
 ### 1. Trigger: "hunt" / "find hackathons"
 
-When the user says **hunt** or asks to find hackathons:
+When the user says **hunt** or asks to find hackathons, parse the optional argument:
+
+- **`/hunt 1`** — user wants only hackathons **with prize money** (cash prizes)
+- **`/hunt`** or **`/hunt 0`** — show all hackathons, prizes optional
+
+Then:
 
 1. **Check USER.md** for the user's skills, timezone (UTC+8 for Lloyd), and preferences.
 2. **Browse the web** for upcoming online hackathons that are:
@@ -30,7 +35,13 @@ When the user says **hunt** or asks to find hackathons:
    - **Devpost** — https://devpost.com/hackathons (filter by online)
    - **Devfolio** — https://devfolio.co/hackathons (filter by online)
    - **lablab.ai** — AI-focused hackathons
-4. **Verify each result — check the event page to confirm it's truly online, free, and open for registration.
+4. **Verify each result** — check the event page to confirm it's truly online, free, and open for registration.
+5. **Prize filter** (only if `/hunt 1`):
+   - For each candidate, fetch the event page and scan for prize information
+   - Look for keywords: cash prize, prize pool, $, bounty, grant, award
+   - If the page only lists swag bags / fellowship admissions / accelerator invites (no cash), **exclude** it
+   - If prize info is unclear, note it and keep it in with a "💰 Prize: Unknown — needs confirmation" label
+   - Present only qualifying results to the user
 
 ### 2. Present Results as Numbered List
 
@@ -45,9 +56,12 @@ Format each result clearly (Telegram-friendly):
    🎯 Theme: [GenAI / FinTech / Open / etc.]
    📍 Location: Online
    💰 Cost: Free
+   💵 Prize: [Cash / Non-cash / None / Unknown]
    🌐 Link: [URL]
    📝 Briefing: [1-2 sentence summary]
 ```
+
+**Always include a `💵 Prize` line** for every listing — even if the prize is none/unknown, so the user can see at a glance.
 
 **Never use markdown tables** when the answer is going to Telegram. Use bullet-formatted lists instead.
 
@@ -99,13 +113,12 @@ When removing entries, renumber to fill gaps.
 
 Only suggest hackathons that meet ALL of these:
 
-| Criteria | Must |
-|----------|------|
-| Online | Fully digital. No travel or in-person required. |
-| Free | $0 to register and participate. |
-| Open | Registration still open (not ended). |
-| Suitable | Aligns with the user's skills from USER.md. If unknown, ask. |
-| No web3 | Skip blockchain/crypto/NFT/DeFi events unless user explicitly asks. |
+- **Online** — Fully digital. No travel or in-person required.
+- **Free** — $0 to register and participate.
+- **Open** — Registration still open (not ended).
+- **Suitable** — Aligns with the user's skills from USER.md. If unknown, ask.
+- **No web3** — Skip blockchain/crypto/NFT/DeFi events unless user explicitly asks.
+- **Has prize money** — Only when `/hunt 1` is used. Must have cash or monetary prizes; swag-only or incubator-only events are excluded.
 
 ## User Profile
 
